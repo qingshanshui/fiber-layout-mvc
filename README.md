@@ -1,5 +1,4 @@
-# fiber-layout-mvc
-
+config
 > 本项目使用 go-fiber 框架为核心搭建的一个mvc模式的脚手架，可以基于本项目快速完成业务开发，开箱📦 即用
 
 ### 运行
@@ -14,7 +13,9 @@ go env -w GO111MODULE=on
 go mod download
 
 # 运行项目
-go run main.go
+go run main.go #默认启动开发环境
+go run main.go -mode dev #开发环境
+go run main.go -mode prod #生产环境
 
 # 项目起来后执行下面命令访问示例路由
 curl "http://127.0.0.1:3000/v1/register?username=admin&password=132456"

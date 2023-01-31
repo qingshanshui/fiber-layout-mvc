@@ -1,14 +1,15 @@
 package main
 
 import (
-	_ "fiber-layout/conf"
-	_ "fiber-layout/initalize"
-	"fiber-layout/routers"
+	_ "fiber-layout-mvc/config"
+	_ "fiber-layout-mvc/initalize"
+	"fiber-layout-mvc/routers"
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/gofiber/template/html"
-	"log"
 )
 
 func main() {

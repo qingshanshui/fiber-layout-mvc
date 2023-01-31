@@ -1,10 +1,10 @@
 package v1
 
 import (
-	"fiber-layout/controllers"
-	"fiber-layout/service"
-	"fiber-layout/validator"
-	"fiber-layout/validator/form"
+	"fiber-layout-mvc/controllers"
+	"fiber-layout-mvc/service"
+	"fiber-layout-mvc/validator"
+	"fiber-layout-mvc/validator/form"
 	"github.com/gofiber/fiber/v2"
 )
 

@@ -1,8 +1,8 @@
 package service
 
 import (
-	"fiber-layout/models"
-	v1 "fiber-layout/validator/form"
+	"fiber-layout-mvc/models"
+	v1 "fiber-layout-mvc/validator/form"
 	"fmt"
 )
 

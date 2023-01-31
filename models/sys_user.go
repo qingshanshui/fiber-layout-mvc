@@ -1,7 +1,7 @@
 package models
 
 import (
-	"fiber-layout/initalize"
+	"fiber-layout-mvc/initalize"
 	"gorm.io/gorm"
 )
 
