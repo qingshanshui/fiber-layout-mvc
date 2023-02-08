@@ -2,8 +2,7 @@ package service
 
 import (
 	"fiber-layout-mvc/models"
-	v1 "fiber-layout-mvc/validator/form"
-	"fmt"
+	"fiber-layout-mvc/validator/form"
 )
 
 type Default struct {
@@ -13,13 +12,18 @@ func NewDefaultService() *Default {
 	return &Default{}
 }
 
-func (t *Default) Register(loginForm v1.Register) (string, error) {
-	msg := fmt.Sprintf("✋ ---- %s", loginForm.UserName)
-	return msg, nil
+// Home 首页
+func (t *Default) Home() ([]models.Course, error) {
+	list, err := models.NewCourse().GetList()
+	if err != nil {
+		return nil, err
+	}
+	return list, nil
 }
 
-func (t *Default) Login(loginForm v1.Login) ([]models.SysUser, error) {
-	list, err := models.NewSysUser().GetList()
+// Category 详情
+func (t *Default) Category(c form.Category) (*models.Course, error) {
+	list, err := models.NewCourse().Category(c.Id)
 	if err != nil {
 		return nil, err
 	}

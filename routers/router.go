@@ -6,18 +6,8 @@ import (
 )
 
 func SetRoute(app *fiber.App) {
-
-	app.Get("/", func(ctx *fiber.Ctx) error {
-		return ctx.Render("index", fiber.Map{
-			"Title": "Hello, World!",
-		}, "layouts/main")
-	})
-
 	main := v1.NewDefaultController()
-	group := app.Group("/v1")
-	// GET /register 	get
-	group.Get("/register", main.Register)
-	// GET /login 	json
-	group.Post("/login", main.Login)
-
+	group := app.Group("/")
+	group.Get("/", main.Home)             // 首页
+	group.Get("/category", main.Category) // 详情
 }
