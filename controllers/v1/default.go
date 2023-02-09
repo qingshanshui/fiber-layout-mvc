@@ -2,9 +2,11 @@ package v1
 
 import (
 	"fiber-layout-mvc/controllers"
+	"fiber-layout-mvc/initalize"
 	"fiber-layout-mvc/service"
 	"fiber-layout-mvc/validator"
 	"fiber-layout-mvc/validator/form"
+
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -18,7 +20,9 @@ func NewDefaultController() *DefaultController {
 
 // Home 首页
 func (t *DefaultController) Home(c *fiber.Ctx) error {
+
 	home, err := service.NewDefaultService().Home()
+	initalize.Log.Info(home)
 	if err != nil {
 		return err
 	}
