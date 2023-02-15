@@ -42,7 +42,8 @@ func (t *DefaultController) Category(c *fiber.Ctx) error {
 	// 实际业务调用
 	api, err := service.NewDefaultService().Category(categoryForm)
 	if err != nil {
-		return c.JSON(t.Fail(err))
+		initalize.Log.Info(err)
+		return c.Status(500).JSON(t.Fail(err))
 	}
 	return c.JSON(t.Ok(api)) // => ✋ register
 }
