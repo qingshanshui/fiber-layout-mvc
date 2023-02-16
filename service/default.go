@@ -14,7 +14,7 @@ func NewDefaultService() *Default {
 
 // Home 首页
 func (t *Default) Home() ([]models.Course, error) {
-	list, err := models.NewCourse().GetList()
+	list, err := models.NewCourse().Home()
 	if err != nil {
 		return nil, err
 	}
@@ -22,7 +22,7 @@ func (t *Default) Home() ([]models.Course, error) {
 }
 
 // Category 详情
-func (t *Default) Category(c form.Category) (*models.Course, error) {
+func (t *Default) Category(c form.CategoryRequest) (*models.Course, error) {
 	list, err := models.NewCourse().Category(c.Id)
 	if err != nil {
 		return nil, err

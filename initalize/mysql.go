@@ -2,6 +2,7 @@ package initalize
 
 import (
 	"fiber-layout-mvc/pkg/utils"
+
 	"github.com/spf13/viper"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
