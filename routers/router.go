@@ -10,4 +10,6 @@ func SetRoute(app *fiber.App) {
 	group := app.Group("/")
 	group.Get("/", main.Home)             // 首页
 	group.Get("/category", main.Category) // 详情
+	group.Get("/login",main.Login) // 登录
+	group.Get("/admin",main.Admin) // 管理页
 }

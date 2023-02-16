@@ -27,7 +27,7 @@ func (t *DefaultController) Home(c *fiber.Ctx) error {
 	}
 	return c.Render("index", fiber.Map{
 		"Title": home,
-	}, "layouts/main")
+	}, "layouts/index")
 }
 
 // Category 详情
@@ -46,4 +46,14 @@ func (t *DefaultController) Category(c *fiber.Ctx) error {
 		return c.Status(500).JSON(t.Fail(err))
 	}
 	return c.JSON(t.Ok(api)) // => ✋ register
+}
+
+// 登录
+func (t *DefaultController) Login(c *fiber.Ctx) error {
+	return c.Render("admin/login/index", fiber.Map{}, "layouts/define")
+}
+
+// 管理页
+func (t *DefaultController) Admin(c *fiber.Ctx) error {
+	return c.Render("admin/index", fiber.Map{}, "layouts/admin")
 }
