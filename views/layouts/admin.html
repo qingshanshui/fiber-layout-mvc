@@ -9,22 +9,144 @@
     <!-- ZUI 标准版压缩后的 CSS 文件 -->
     <link rel="stylesheet" href="https://pan.nuzn.cn/v1/download?path=/zui/1.10.0/css/zui.min.css">
 </head>
+
 <style>
+    @media (max-width: 767px) {
+        .admin .admin-main {
+            height: auto;
+        }
+
+        .admin .admin-head {
+            padding: 10px;
+        }
+
+        .admin .admin-head-logo {
+            text-align: left;
+        }
+
+        .admin .admin-main-content {
+            padding: 10px 20px;
+        }
+    }
+
     html,
     body,
-    .container {
+    .container-fluid {
         height: 100%;
+        background-color: #f2f2f2;
+    }
+
+    .admin {
+
+        height: 100%;
+        min-width: 350px;
+    }
+
+    .admin-head {
+        padding: 20px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #eee;
+    }
+
+    .admin-head-logo {
+        text-align: center;
+    }
+
+    .admin-head-logo img {
+        width: 120px;
+    }
+
+    .admin-head-operation {
+        display: flex;
+        justify-content: end;
+    }
+
+    .admin-main {
+        height: calc(100% - 78.33px);
+    }
+
+    .admin-main-sidebar {
+        height: 100%;
+        background-color: #ffffff;
+        padding: 10px;
+        text-align: left;
+    }
+
+    .admin-main-sidebar li {
+        width: 100%;
+
+    }
+
+    .admin-main-sidebar li>a {
+        border-right: none;
+        border-left: none;
+        border-top: none;
+        border-radius: 0 !important;
+    }
+
+    .admin-main-content {
+        padding: 10px;
     }
 </style>
 
 <body>
-    <div class="container">
-        {{embed}}
+    <div class="container-fluid">
+        <div class="admin">
+            <div class="admin-head row">
+                <div class="admin-head-logo col-sm-2 col-xs-6">
+                    <a href="/admin">
+                        <img src="https://pan.nuzn.cn/v1/download?path=/image/logo.png" alt="">
+                    </a>
+                </div>
+                <div class="admin-head-operation col-sm-10 col-xs-6">
+                    <ul class="nav nav-primary">
+                        <li class="visible-xs admin-head-operation-close"><a href="#"> <i
+                                    class="icon icon-tasks "></i></a></li>
+                        <li><a href="#"><i class="icon icon-spin icon-cog"></i> </a></li>
+                        <li><a href="#"><i class="icon icon-off"></i> </a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="admin-main row">
+                <div class="admin-main-sidebar col-sm-2 hidden-xs">
+                    <nav class="menu" data-ride="menu">
+                        <ul class="nav nav-primary">
+                            <li><a href="javascript:;"><i class="icon icon-th"></i> 首页</a></li>
+                            <li class="active"><a href="javascript:;"><i class="icon icon-user"></i> 发文章</a></li>
+                            <li><a href="javascript:;"><i class="icon icon-trash"></i> 文章列表</a></li>
+                            <li><a href="javascript:;"><i class="icon icon-list-ul"></i> 大小姐</a></li>
+                            <li><a href="javascript:;"><i class="icon icon-list-ul"></i> 大小姐</a></li>
+                            <li><a href="javascript:;"><i class="icon icon-list-ul"></i> 大小姐</a></li>
+                            <li><a href="javascript:;"><i class="icon icon-list-ul"></i> 大小姐</a></li>
+                            <li><a href="javascript:;"><i class="icon icon-list-ul"></i> 大小姐</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="admin-main-content col-sm-10">
+                    {{embed}}
+                </div>
+            </div>
+        </div>
+
     </div>
     <!-- ZUI Javascript 依赖 jQuery -->
     <script src="https://pan.nuzn.cn/v1/download?path=/jquery/3.63/jquery-3.6.3.min.js"></script>
     <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
     <script src="https://pan.nuzn.cn/v1/download?path=/zui/1.10.0/js/zui.min.js"></script>
+    <script>
+        let closeDom = document.querySelector('.admin .admin-head-operation-close')
+        closeDom.addEventListener('click', (e) => {
+            let sidebarDom = document.querySelector('.admin .admin-main-sidebar')
+            let IsShowDom = document.querySelector('.admin .admin-main-sidebar.hidden-xs')
+            if (IsShowDom) {
+                sidebarDom.classList.remove('hidden-xs')
+            } else {
+                sidebarDom.classList.add('hidden-xs')
+            }
+            console.log(e, 1111, document.querySelector('.admin .admin-main-sidebar').classList);
+        })
+        console.log(closeDom);
+    </script>
 </body>
 
 </html>
