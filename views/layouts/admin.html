@@ -11,94 +11,89 @@
 </head>
 
 <style>
-    @media (max-width: 767px) {
+    @media (min-width: 768px) {
+        .admin .admin-main-sidebar {
+            height: 100% !important;
+        }
+    }
+
+    @media (max-width: 768px) {
         .admin .admin-main {
-            height: auto;
+            display: block;
         }
 
-        .admin .admin-head {
-            padding: 10px;
-        }
-
-        .admin .admin-head-logo {
-            text-align: left;
-        }
-
-        .admin .admin-main-content {
-            padding: 10px 20px;
+        .admin .admin-main-sidebar {
+            width: 100%;
+            height: 0;
+            padding: 0;
         }
     }
 
     html,
     body,
     .container-fluid {
+        padding: 0;
+        margin: 0;
         height: 100%;
         background-color: #f2f2f2;
+        min-width: 375px;
     }
 
     .admin {
-
         height: 100%;
-        min-width: 350px;
     }
 
     .admin-head {
-        padding: 20px;
-        background-color: #ffffff;
-        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        padding: 10px;
     }
 
     .admin-head-logo {
-        text-align: center;
-    }
-
-    .admin-head-logo img {
         width: 120px;
     }
 
-    .admin-head-operation {
-        display: flex;
-        justify-content: end;
-    }
-
     .admin-main {
-        height: calc(100% - 78.33px);
+        display: flex;
+        height: calc(100% - 57.33px);
     }
 
     .admin-main-sidebar {
-        height: 100%;
-        background-color: #ffffff;
+        width: 250px;
         padding: 10px;
-        text-align: left;
+        background-color: #fff;
+        overflow: hidden;
     }
 
     .admin-main-sidebar li {
         width: 100%;
-
     }
 
     .admin-main-sidebar li>a {
-        border-right: none;
+        /* border-right: none;
         border-left: none;
         border-top: none;
-        border-radius: 0 !important;
+        border-radius: 0 !important; */
     }
 
     .admin-main-content {
         padding: 10px;
+        flex: 1;
     }
 </style>
 
 <body>
     <div class="container-fluid">
         <div class="admin">
-            <div class="admin-head row">
-                <div class="admin-head-logo col-sm-2 col-xs-6">
+            <div class="admin-head">
+                <div class="admin-head-logo">
                     <a href="/admin">
-                        <img src="https://pan.nuzn.cn/v1/download?path=/image/logo.png" alt="">
+                        <img src="https://pan.nuzn.cn/v1/download?path=/image/logo.png" alt="logo">
                     </a>
                 </div>
-                <div class="admin-head-operation col-sm-10 col-xs-6">
+                <div class="admin-head-operation">
                     <ul class="nav nav-primary">
                         <li class="visible-xs admin-head-operation-close"><a href="#"> <i
                                     class="icon icon-tasks "></i></a></li>
@@ -107,8 +102,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="admin-main row">
-                <div class="admin-main-sidebar col-sm-2 hidden-xs">
+            <div class="admin-main">
+                <div class="admin-main-sidebar">
                     <nav class="menu" data-ride="menu">
                         <ul class="nav nav-primary">
                             <li><a href="javascript:;"><i class="icon icon-th"></i> 首页</a></li>
@@ -122,30 +117,27 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="admin-main-content col-sm-10">
+                <div class="admin-main-content">
                     {{embed}}
                 </div>
             </div>
         </div>
-
     </div>
     <!-- ZUI Javascript 依赖 jQuery -->
     <script src="https://pan.nuzn.cn/v1/download?path=/jquery/3.63/jquery-3.6.3.min.js"></script>
     <!-- ZUI 标准版压缩后的 JavaScript 文件 -->
     <script src="https://pan.nuzn.cn/v1/download?path=/zui/1.10.0/js/zui.min.js"></script>
     <script>
-        let closeDom = document.querySelector('.admin .admin-head-operation-close')
-        closeDom.addEventListener('click', (e) => {
-            let sidebarDom = document.querySelector('.admin .admin-main-sidebar')
-            let IsShowDom = document.querySelector('.admin .admin-main-sidebar.hidden-xs')
-            if (IsShowDom) {
-                sidebarDom.classList.remove('hidden-xs')
+        document.querySelector('.admin-head-operation-close').addEventListener('click', () => {
+            let showDom = document.querySelector('.admin-main-sidebar') // 隐藏/显示 dom
+            let heights = document.querySelector('.admin .admin-main-sidebar>nav') // 获取 高度的dom
+            if (showDom.offsetHeight) {
+                showDom.style.height = "0px"
             } else {
-                sidebarDom.classList.add('hidden-xs')
+                showDom.style.transition = "all .3s"
+                showDom.style.height = `${heights.offsetHeight}px`
             }
-            console.log(e, 1111, document.querySelector('.admin .admin-main-sidebar').classList);
         })
-        console.log(closeDom);
     </script>
 </body>
 
