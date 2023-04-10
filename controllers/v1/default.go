@@ -3,10 +3,13 @@ package v1
 import (
 	"fiber-layout-mvc/controllers"
 	"fiber-layout-mvc/initalize"
+	"fiber-layout-mvc/pkg/utils"
 	"fiber-layout-mvc/service"
 	"fiber-layout-mvc/validator"
 	"fiber-layout-mvc/validator/form"
 	"github.com/gofiber/fiber/v2"
+	"github.com/spf13/viper"
+	"time"
 )
 
 type DefaultController struct {
@@ -24,6 +27,16 @@ func (t *DefaultController) Home(c *fiber.Ctx) error {
 		initalize.Log.Info(err)
 		return err
 	}
+	// 设置cookie
+	cookie := new(fiber.Cookie)
+	cookie.Name = "token"
+	token, err := utils.CreateToken("123456", viper.GetString("Jwt.Secret"))
+	if err != nil {
+		return err
+	}
+	cookie.Value = token
+	cookie.Expires = time.Now().Add(24 * time.Hour)
+	c.Cookie(cookie)
 	return c.Render("index", fiber.Map{
 		"Title": home,
 	}, "layouts/index")
