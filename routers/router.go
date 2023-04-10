@@ -2,7 +2,6 @@ package routers
 
 import (
 	v1 "fiber-layout-mvc/controllers/v1"
-
 	"github.com/gofiber/fiber/v2"
 )
 

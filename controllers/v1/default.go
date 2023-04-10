@@ -6,7 +6,6 @@ import (
 	"fiber-layout-mvc/service"
 	"fiber-layout-mvc/validator"
 	"fiber-layout-mvc/validator/form"
-
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -45,15 +44,15 @@ func (t *DefaultController) Category(c *fiber.Ctx) error {
 		initalize.Log.Info(err)
 		return c.Status(500).JSON(t.Fail(err))
 	}
-	return c.JSON(t.Ok(api)) // => ✋ register
+	return c.JSON(t.Ok(api))
 }
 
-// 登录
+// Login 登录页
 func (t *DefaultController) Login(c *fiber.Ctx) error {
 	return c.Render("admin/login/index", fiber.Map{}, "layouts/define")
 }
 
-// 管理页
+// Admin 管理页
 func (t *DefaultController) Admin(c *fiber.Ctx) error {
 	return c.Render("admin/index", fiber.Map{}, "layouts/admin")
 }
