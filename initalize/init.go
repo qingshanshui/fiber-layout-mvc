@@ -1,9 +1,8 @@
 package initalize
 
 import (
-	"sync"
-
 	"github.com/spf13/viper"
+	"sync"
 )
 
 var once sync.Once
