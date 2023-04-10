@@ -5,8 +5,7 @@ import (
 	"fiber-layout-mvc/validator/form"
 )
 
-type Default struct {
-}
+type Default struct{}
 
 func NewDefaultService() *Default {
 	return &Default{}
@@ -14,7 +13,7 @@ func NewDefaultService() *Default {
 
 // Home 首页
 func (t *Default) Home() ([]models.Course, error) {
-	list, err := models.NewCourse().Home()
+	list, err := models.NewCourse().List()
 	if err != nil {
 		return nil, err
 	}

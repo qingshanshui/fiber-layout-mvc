@@ -14,8 +14,8 @@ func NewCourse() *Course {
 	return &Course{}
 }
 
-// GetList 列表
-func (t *Course) Home() ([]Course, error) {
+// List 列表
+func (t *Course) List() ([]Course, error) {
 	var result []Course
 	if err := initalize.DB.Raw("select * from Course LIMIT 10").Find(&result).Error; err != nil {
 		return nil, err
